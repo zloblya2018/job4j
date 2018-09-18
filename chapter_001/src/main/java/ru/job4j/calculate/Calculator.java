@@ -12,7 +12,7 @@ public class Calculator {
      * @param args - args.
      */
      
-    double result;
+    private double result;
     
     public void add(double first, double second) {
         this.result = first + second;
