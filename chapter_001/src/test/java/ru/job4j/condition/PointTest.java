@@ -3,7 +3,6 @@ package ru.job4j.condition;
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import java.lang.Math;
 
 public class PointTest {
     @Test

@@ -1,7 +1,7 @@
 package ru.job4j.condition;
 
 /**
-* Calculate.
+* Distance to point.
 *
 * @author Belyakov Maksim (mailto: zloblya2018@mail.ru)
 * @version $Id$
