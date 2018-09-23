@@ -1,7 +1,7 @@
 package ru.job4j.condition;
 
 /**
-* Area of a triangle.
+* Area of a Triangle.
 *
 * @author Belyakov Maksim (mailto: zloblya2018@mail.ru)
 * @version $Id$
@@ -33,9 +33,6 @@ public class Triangle {
 	
 	/**
      * Method calculates the area of the triangle.
-     * @param p semiperimeter
-	 * @param ac distance between points a and c.
-	 * @param bc distance between points b and c.
      * @return rsl area of the triangle.
      */
 	
@@ -45,7 +42,7 @@ public class Triangle {
 		double ac = this.a.distanceTo(this.c);
 		double bc = this.b.distanceTo(this.c);
 		double p = this.period(ab, ac, bc);
-		if(this.exist(ab, ac, bc)) {
+		if (this.exist(ab, ac, bc)) {
 			rsl = Math.sqrt(p * (p - ab) * (p - ac) * (p - bc));
 		}
 		return rsl;
@@ -53,10 +50,21 @@ public class Triangle {
 	
 	/**
      * Method of existence of a triangle.
+     * @param ab distance between points a and b.
+	 * @param ac distance between points a and c.
+	 * @param bc distance between points b and c.
      * @return false and true.
      */
 	 
 	private boolean exist(double ab, double ac, double bc) {
-		return ((ab + ac) > bc || (ab + bc) > ac || (ac + bc) > ab);
+	    boolean result = false;
+	    if ((ab + ac) > bc && bc > ab && bc > ac) {
+	        result = true;
+	    } else if ((ab + bc) > ac && ac > ab && ac > bc) {
+	        result = true;
+	    } else if ((ac + bc) > ab && ab > ac && ab > bc) {
+	        result = true;
+	    }
+		return result;
 	}
 }
