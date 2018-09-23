@@ -2,7 +2,6 @@ package ru.job4j.condition;
 
 /**
 * Area of a Triangle.
-*
 * @author Belyakov Maksim (mailto: zloblya2018@mail.ru)
 * @version $Id$
 * @since 20.09.2018
