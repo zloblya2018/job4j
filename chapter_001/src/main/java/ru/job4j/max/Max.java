@@ -1,7 +1,7 @@
 package ru.job4j.max;
 
 /**
-* Maximum of two number.
+* Maximum of two number and three.
 */
 
 public class Max {
@@ -12,5 +12,14 @@ public class Max {
     */
     public int max(int first, int second) {
         return first > second ? first : second;
+    }
+    /**
+     * Maximum of three number.
+     * @param first number, second number, third number.
+     * @return maximum number.
+     */
+    public int max(int first, int second, int third) {
+        int temp = this.max(first, second);
+        return temp > third ? temp : third;
     }
 }
