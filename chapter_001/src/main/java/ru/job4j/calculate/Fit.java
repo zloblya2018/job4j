@@ -8,7 +8,7 @@ package ru.job4j.calculate;
 public class Fit {
     /**
     * Ideal weight for man.
-    * @param height.
+    * @param height Man's height.
     * @return ideal weight.
     */
     public double manWeight(double height) {
@@ -16,7 +16,7 @@ public class Fit {
     }
     /**
     * Ideal weight for woman.
-    * @param height.
+    * @param height Man's height.
     * @return ideal weight.
     */
     public double womanWeight(double height) {

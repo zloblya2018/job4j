@@ -7,7 +7,7 @@ package ru.job4j.max;
 public class Max {
      /**
     * Maximum of two number.
-    * @param no.
+    * @param first number, second number.
     * @return maximum number.
     */
     public int max(int first, int second) {

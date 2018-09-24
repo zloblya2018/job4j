@@ -11,7 +11,6 @@ package ru.job4j.condition;
 public class DummyBot {
     /**
      * Method answers the questions.
-     * @param questions.
      * @return answers.
      */
      

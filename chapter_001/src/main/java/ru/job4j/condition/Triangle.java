@@ -8,9 +8,9 @@ package ru.job4j.condition;
 */
 
 public class Triangle {
-	private Point a;
-	private Point b;
-	private Point c;
+	private final Point a;
+	private final Point b;
+	private final Point c;
 	
 	public Triangle(Point a, Point b, Point c) {
 		this.a = a;
@@ -19,11 +19,11 @@ public class Triangle {
 	}
 	
 	/**
-     * Method calculates a semiperimeter.
+     * Method calculates a half-perimeter.
      * @param ab distance between points a and b.
 	 * @param ac distance between points a and c.
 	 * @param bc distance between points b and c.
-     * @return semiperimeter.
+     * @return half-perimeter.
      */
 	 
 	public double period(double ab, double ac, double bc) {
