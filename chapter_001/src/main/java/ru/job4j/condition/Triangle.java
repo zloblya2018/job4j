@@ -56,14 +56,6 @@ public class Triangle {
      */
 	 
 	private boolean exist(double ab, double ac, double bc) {
-	    boolean result = false;
-	    if ((ab + ac) > bc && bc > ab && bc > ac) {
-	        result = true;
-	    } else if ((ab + bc) > ac && ac > ab && ac > bc) {
-	        result = true;
-	    } else if ((ac + bc) > ab && ab > ac && ab > bc) {
-	        result = true;
-	    }
-		return result;
+	    return (ab + ac) > bc && (ab + bc) > ac && (ac + bc) > ab;
 	}
 }
