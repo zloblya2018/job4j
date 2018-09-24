@@ -19,7 +19,6 @@ public class Max {
      * @return maximum number.
      */
     public int max(int first, int second, int third) {
-        int temp = this.max(first, second);
-        return temp > third ? temp : third;
+        return this.max(first, second) > third ? this.max(first, second) : third;
     }
 }
