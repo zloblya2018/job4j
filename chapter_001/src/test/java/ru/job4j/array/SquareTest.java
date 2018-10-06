@@ -16,7 +16,7 @@ public class SquareTest {
         assertThat(result, is(expected));
     }
     @Test
-    public void whenBound4Then1_4_9_16() {
+    public void whenBound4Then14916() {
         int bound = 4;
         Square square = new Square();
         int[] result = square.calculate(bound);
