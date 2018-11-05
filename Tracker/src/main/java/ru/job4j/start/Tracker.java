@@ -1,21 +1,39 @@
 package ru.job4j.start;
 
 import ru.job4j.models.*;
+import java.util.Random;
 
 public class Tracker {
-    public Item[] items = new Item[3];
+    private Item[] items = new Item[10];
+    private int position = 0;
+    private static final Random RN = new Random();
 
-    public static void main(String[] args) {
-        Tracker tracker = new Tracker();
-        tracker.items[0] = new Item("item", "desc", 10);
-        tracker.items[1] = new Task("task", "descSecond");
-        tracker.items[2] = new Bug();
+    public Item add(Item item) {
+        item.setId(String.valueOf(RN.nextInt()));
+        this.items[position++] = item;
+        return item;
+    }
 
-        for (Item item : tracker.items) {
-            if (item instanceof Task) {
-                System.out.println(((Task)item).calculatePrice());
+    protected Item findById(String id) {
+        Item result = null;
+        for (Item item : items) {
+            if (item != null && item.getId().equals(id)) {
+                result = item;
+                break;
             }
-            System.out.println(item.getName() + " " + item.getDescription());
         }
+        return result;
+    }
+
+    String generateId() {
+        return String.valueOf(System.currentTimeMillis() + RN.nextInt());
+    }
+
+    public Item[] getAll() {
+        Item[] result = new Item[position];
+        for(int index = 0; index != position; index++) {
+            result[index] = this.items[index];
+        }
+        return result;
     }
 }
