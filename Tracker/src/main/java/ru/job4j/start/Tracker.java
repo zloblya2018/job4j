@@ -24,23 +24,18 @@ public class Tracker {
     /**
      * Редактирование заявок.
      */
-    public Item replace(String id, Item item) {
-        int position = 0;
-        for (Item itemIndex : items) {
-            for (int index = 0; index != this.position; index++) {
-                if (itemIndex != null && itemIndex.getId().equals(id)) {
-                    position = index;
-                    break;
-                }
-            }
-        }
-        this.items[position] = item;
-        return this.items[position];
+    public void replace(Item item) {
+        Item replaceItem = this.findById(item.getId());
+        replaceItem.setId(item.getId());
+        replaceItem.setName(item.getName());
+        replaceItem.setCreate(item.getCreate());
+        replaceItem.setDescription(item.getDescription());
+        replaceItem.setComments(item.getComments());
     }
     /**
      * Удаление заявок.
      */
-    public void delete(String id) {
+    public void delete(Item id) {
         int position = 0;
         for (Item itemIndex : items) {
             for (int index = 0; index != this.position; index++) {
@@ -55,7 +50,7 @@ public class Tracker {
     /**
      * Получение заявки.
      */
-    protected Item findById(String id) {
+    public Item findById(String id) {
         Item result = null;
         for (Item item : items) {
             if (item != null && item.getId().equals(id)) {
@@ -69,8 +64,13 @@ public class Tracker {
      * Получение списка по имени.
      */
     public Item[] findByName(String key) {
-        Item[] result = null;
-
+        Item[] result = new Item[this.position];
+        for (Item item : items) {
+            if (item != null && item.getName().equals(key)) {
+                result[this.position] = item;
+                break;
+            }
+        }
         return result;
     }
 
