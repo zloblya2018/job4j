@@ -63,11 +63,11 @@ public class Tracker {
     /**
      * Получение списка по имени.
      */
-    public Item[] findByName(String key) {
-        Item[] result = new Item[this.position];
+    public Item findByName(String key) {
+        Item result = null;
         for (Item item : items) {
             if (item != null && item.getName().equals(key)) {
-                result[this.position] = item;
+                result = item;
                 break;
             }
         }
