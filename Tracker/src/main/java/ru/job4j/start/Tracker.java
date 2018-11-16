@@ -47,9 +47,9 @@ public class Tracker {
                System.arraycopy(this.items, index + 1, this.items, index,
                        this.items.length - 1 - index);
                this.position--;
+               this.items[index] = null;
                break;
            }
-           this.items[index] = null;
        }
     }
     /**
