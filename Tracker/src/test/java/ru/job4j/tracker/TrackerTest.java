@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-import com.sun.tools.javac.jvm.Items;
 import org.junit.Test;
 import ru.job4j.models.Item;
 import ru.job4j.start.Tracker;
@@ -25,7 +24,7 @@ public class TrackerTest {
         tracker.add(firstItem);
         Item secondItem = new Item("secondItem", "secondTestDescription", 444);
         secondItem.setId(firstItem.getId());
-        tracker.replace(secondItem);
+        tracker.replace("firstItem", secondItem);
         assertThat(tracker.findById(firstItem.getId()).getName(), is("secondItem"));
 
     }
@@ -37,8 +36,9 @@ public class TrackerTest {
         tracker.add(firstItem);
         Item secondItem = new Item("secondItem", "testDescription", 333);
         tracker.add(secondItem);
-        tracker.delete((firstItem));
-        assertThat(tracker.findById(firstItem.getId()), is((Item) null));
+        tracker.delete(firstItem.getId());
+        Item[] items = {secondItem};
+        assertThat(tracker.getAll(), is(items));
     }
 
     @Test

@@ -1,6 +1,8 @@
 package ru.job4j.start;
 
 import ru.job4j.models.*;
+
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -24,28 +26,31 @@ public class Tracker {
     /**
      * Редактирование заявок.
      */
-    public void replace(Item item) {
-        Item replaceItem = this.findById(item.getId());
-        replaceItem.setId(item.getId());
-        replaceItem.setName(item.getName());
-        replaceItem.setCreate(item.getCreate());
-        replaceItem.setDescription(item.getDescription());
-        replaceItem.setComments(item.getComments());
+    public void replace(String id, Item item) {
+        int position = 0;
+        for (Item counter : items) {
+           for (int index = 0; index != this.position; index++) {
+               if (counter != null && counter.getId().equals(id)) {
+                   position = index;
+                   break;
+               }
+               this.items[position] = item;
+           }
+        }
     }
     /**
      * Удаление заявок.
      */
-    public void delete(Item id) {
-        int position = 0;
-        for (Item itemIndex : items) {
-            for (int index = 0; index != this.position; index++) {
-                if (itemIndex != null && itemIndex.getId().equals(id)) {
-                    position = index;
-                    break;
-                }
-            }
-            this.items[position] = null;
-        }
+    public void delete(String id) {
+       for (int index = 0; index != this.position; index++) {
+           if (items[index] != null && items[index].getId().equals(id)) {
+               System.arraycopy(this.items, index + 1, this.items, index,
+                       this.items.length - 1 - index);
+               this.position--;
+               break;
+           }
+           this.items[index] = null;
+       }
     }
     /**
      * Получение заявки.
@@ -82,6 +87,7 @@ public class Tracker {
      */
     public Item[] getAll() {
         Item[] result = new Item[this.position];
+        Arrays.copyOf(this.items, result.length);
         for(int index = 0; index != this.position; index++) {
             result[index] = this.items[index];
         }
