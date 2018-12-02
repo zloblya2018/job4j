@@ -1,13 +1,18 @@
 package ru.job4j.models;
 
 public class Item {
-    private String name;
-    private String description;
+    public String name;
+    public String description;
+    public long create;
     private String id;
-    private long create;
     private String[] comments;
 
     public Item() {
+    }
+
+    public Item(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
     public Item(String name, String description, long create) {

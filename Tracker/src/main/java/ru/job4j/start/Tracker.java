@@ -2,14 +2,7 @@ package ru.job4j.start;
 
 import ru.job4j.models.*;
 
-import java.util.Arrays;
-import java.util.Random;
-
-/**
- * В этом классе хранятся все заявки.
- * Возможно добавлять, редактировать и удалять заявки, также
- * возможен вывод списка всех заявок и вывод списка по фильтру.
- */
+import java.util.*;
 
 public class Tracker {
     private Item[] items = new Item[100];
@@ -27,30 +20,29 @@ public class Tracker {
      * Редактирование заявок.
      */
     public void replace(String id, Item item) {
-        int position = 0;
-        for (Item counter : items) {
-           for (int index = 0; index != this.position; index++) {
-               if (counter != null && counter.getId().equals(id)) {
-                   position = index;
-                   break;
-               }
-               this.items[position] = item;
-           }
+        for (Item index : items) {
+            for (int i = 0; i < items.length; i++) {
+                if (id.equals(index.getId())) {
+                    items[i] = item;
+                    break;
+                }
+            }
         }
     }
     /**
      * Удаление заявок.
      */
     public void delete(String id) {
-       for (int index = 0; index != this.position; index++) {
-           if (items[index] != null && items[index].getId().equals(id)) {
-               System.arraycopy(this.items, index + 1, this.items, index,
-                       this.items.length - 1 - index);
-               this.position--;
-               this.items[index] = null;
-               break;
-           }
-       }
+        int position = 0;
+        for (Item itemIndex : items) {
+            for (int index = 0; index != this.position; index++) {
+                if (itemIndex != null && itemIndex.getId().equals(id)) {
+                    position = index;
+                    break;
+                }
+            }
+            this.items[position] = null;
+        }
     }
     /**
      * Получение заявки.
@@ -87,10 +79,30 @@ public class Tracker {
      */
     public Item[] getAll() {
         Item[] result = new Item[this.position];
-        Arrays.copyOf(this.items, result.length);
+        Arrays.copyOf(items, result.length);
         for(int index = 0; index != this.position; index++) {
             result[index] = this.items[index];
         }
         return result;
     }
 }
+/*
+        Item item = new Item("name", "desc", 0);
+        System.out.println(item.getName() + " " + item.getDescription());
+
+        Item task = new Task("nameTask", "descTask");
+        System.out.println(task.getName() + " " + task.getDescription());
+
+          Tracker tracker = new Tracker();
+        tracker.items[0] = new Item("name", "desc", 0);
+        tracker.items[1] = new Task("nameTask", "descTask");
+        tracker.items[2] = new Bug();
+
+        for (Item item : tracker.items) {
+            if (item instanceof Task) {
+                System.out.println(((Task) item).calculatePrice());
+            }
+            System.out.println(item.getName() + " " + item.getDescription());
+        }
+
+        */
