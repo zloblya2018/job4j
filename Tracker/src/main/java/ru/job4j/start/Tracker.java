@@ -32,26 +32,26 @@ public class Tracker {
     /**
      * Удаление заявок.
      */
-    public void delete(String id) {
-        int position = 0;
-        for (Item itemIndex : items) {
-            for (int index = 0; index != this.position; index++) {
-                if (itemIndex != null && itemIndex.getId().equals(id)) {
-                    position = index;
-                    break;
-                }
+    public Item[] delete(String id) {
+        Item[] result = new Item[position];
+        for (int index = 0; index != position; index++) {
+            if (items[index] != null && items[index].getId().equals(id)) {
+                result[0] = items[index];
+                break;
+            } else {
+                System.arraycopy(items, index, result, index, items.length - 1);
             }
-            this.items[position] = null;
         }
+        return result;
     }
     /**
      * Получение заявки.
      */
     public Item findById(String id) {
         Item result = null;
-        for (Item item : items) {
-            if (item != null && item.getId().equals(id)) {
-                result = item;
+        for (int index = 0; index != position; index++) {
+            if (items[index] != null && items[index].getId().equals(id)) {
+                result = items[index];
                 break;
             }
         }
@@ -60,15 +60,14 @@ public class Tracker {
     /**
      * Получение списка по имени.
      */
-    public Item findByName(String key) {
-        Item result = null;
-        for (Item item : items) {
-            if (item != null && item.getName().equals(key)) {
-                result = item;
-                break;
-            }
-        }
-        return result;
+    public Item[] findByName(String name) {
+       Item[] result = new Item[position];
+       for (int index = 0; index != position; index++) {
+           if (items[index] != null && items[index].getName().equals(name)) {
+               result[index] = items[index];
+           }
+       }
+       return result;
     }
 
     String generateId() {
@@ -78,12 +77,15 @@ public class Tracker {
      * Получение списка всех заявок.
      */
     public Item[] getAll() {
-        Item[] result = new Item[this.position];
-        Arrays.copyOf(items, result.length);
-        for(int index = 0; index != this.position; index++) {
-            result[index] = this.items[index];
-        }
-        return result;
+        return Arrays.copyOf(items, this.position);
+    }
+
+    /**
+     * Вывод на консоль отдельной заявки.
+     */
+    public void outputToTaskInConsole(Item item) {
+        System.out.println("Уникальный номер: " + item.getId() + " Имя заявки: "
+                + item.getName() + " Описание заявки: " + item.getDescription());
     }
 }
 /*

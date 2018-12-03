@@ -69,6 +69,7 @@ public class StartUI {
                 this.replaceItem();
             } else if (DEL.equals(answer)) {
                 this.deleteItem();
+                this.getAllItem();
             } else if (FINDBYID.equals(answer)) {
                 this.findByIdItem();
             } else if (FINDBYNAME.equals(answer)) {
@@ -78,7 +79,6 @@ public class StartUI {
             }
         }
     }
-
     /**
      * Метод реализует добавленяи новый заявки в хранилище.
      */
@@ -124,17 +124,17 @@ public class StartUI {
     private void deleteItem() {
         System.out.println("------------ Удаление заявки ------------ ");
         String id = this.input.ask("Введите id заявки, которая подлежит удалению: ");
-        this.tracker.delete(id);
+        tracker.delete(id);
         System.out.println("------------ Ваши изменения успешно внесены ------------ ");
     }
     /**
      * Метод реализует поиск заявки по id.
      */
     private void findByIdItem() {
-        System.out.println("------------ Поиск заявки id ------------ ");
-        String id = this.input.ask("Введите id заявки, которую нужно найти: ");
+        System.out.println("------------ Поиск заявки по имени ------------ ");
+        String id = this.input.ask("Введите уникальный номер заявки, которую нужно найти: ");
         for (Item item : tracker.getAll()) {
-            if (id.equals(item.getId())) {
+            if (item.getId().equals(tracker.findById(id))) {
                 System.out.println("Уникальный номер: " + item.getId() + " Имя заявки: "
                         + item.getName() + " Описание заявки: " + item.getDescription());
                 break;
@@ -148,14 +148,11 @@ public class StartUI {
         System.out.println("------------ Поиск заявки по имени ------------ ");
         String name = this.input.ask("Введите имя заявки, которую нужно найти: ");
         for (Item item : tracker.getAll()) {
-            if (name.equals(item.getName())) {
-                System.out.println("Уникальный номер: " + item.getId() + " Имя заявки: "
-                        + item.getName() + " Описание заявки: " + item.getDescription());
-                break;
+            if (item.getName().equals(tracker.findByName(name))) {
+                tracker.outputToTaskInConsole(item);
             }
         }
     }
-
     private void showMenu() {
         System.out.println("Меню.");
         System.out.println("0. Добавить новую заявку.");
