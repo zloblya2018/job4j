@@ -96,8 +96,7 @@ public class StartUI {
     private void getAllItem() {
         System.out.println("------------ Начало списка всех заявок ------------ ");
         for (Item item : tracker.getAll()) {
-            System.out.println("Уникальный номер: " + item.getId() + " Имя заявки: "
-                    + item.getName() + " Описание заявки: " + item.getDescription());
+            System.out.println(item);
         }
         System.out.println("------------ Конец списка всех заявок ------------ ");
     }
@@ -131,14 +130,14 @@ public class StartUI {
      * Метод реализует поиск заявки по id.
      */
     private void findByIdItem() {
-        System.out.println("------------ Поиск заявки по имени ------------ ");
+        System.out.println("------------ Поиск заявки по id ------------ ");
         String id = this.input.ask("Введите уникальный номер заявки, которую нужно найти: ");
         for (Item item : tracker.getAll()) {
             if (item.getId().equals(tracker.findById(id))) {
-                System.out.println("Уникальный номер: " + item.getId() + " Имя заявки: "
-                        + item.getName() + " Описание заявки: " + item.getDescription());
+                System.out.println(item);
                 break;
             }
+            System.out.println("------------ Конец списка всех заявок ------------ ");
         }
     }
     /**
@@ -149,8 +148,9 @@ public class StartUI {
         String name = this.input.ask("Введите имя заявки, которую нужно найти: ");
         for (Item item : tracker.getAll()) {
             if (item.getName().equals(tracker.findByName(name))) {
-                tracker.outputToTaskInConsole(item);
+                System.out.println(item);
             }
+            System.out.println("------------ Конец списка всех заявок ------------ ");
         }
     }
     private void showMenu() {
@@ -174,21 +174,3 @@ public class StartUI {
         new StartUI(new ConsoleInput(), new Tracker()).init();
     }
 }
-
-/*
-    public void init() {
-        //ConsoleInput input = new ConsoleInput();
-        String name = input.ask("Пожалуйста, введите имя заявки: ");
-        Tracker tracker = new Tracker();
-        tracker.add(new Task(name, "desc2Task"));
-        for (Item item : tracker.getAll()) {
-            System.out.println(item.getName());
-        }
-    }
-
-    public static void main(String[] args) {
-        //new StartUI(new StubInput(new String[] {"cteate stub task"})).init();
-        Input input = new ConsoleInput();
-        new StartUI(input).init();
-    }
-*/
