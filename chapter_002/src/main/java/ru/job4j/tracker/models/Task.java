@@ -1,4 +1,4 @@
-package ru.job4j.models;
+package ru.job4j.tracker.models;
 
 public class Task extends Item {
     public Task(String name, String description) {

@@ -1,4 +1,6 @@
-package ru.job4j.models;
+package ru.job4j.tracker.models;
+
+import java.util.Arrays;
 
 public class Item {
     public String name;
@@ -59,5 +61,16 @@ public class Item {
 
     public void setComments(String[] comments) {
         this.comments = comments;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", create=" + create +
+                ", id='" + id + '\'' +
+                ", comments=" + Arrays.toString(comments) +
+                '}';
     }
 }

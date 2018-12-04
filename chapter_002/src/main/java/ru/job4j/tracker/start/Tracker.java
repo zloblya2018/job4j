@@ -1,6 +1,7 @@
-package ru.job4j.start;
+package ru.job4j.tracker.start;
 
-import ru.job4j.models.*;
+import com.sun.org.apache.regexp.internal.RE;
+import ru.job4j.tracker.models.*;
 
 import java.util.*;
 
@@ -61,13 +62,15 @@ public class Tracker {
      * Получение списка по имени.
      */
     public Item[] findByName(String name) {
-        Item[] result = new Item[position];
+        Item[] result = new Item[this.position];
+        int counter = 0;
         for (int index = 0; index != position; index++) {
             if (items[index] != null && items[index].getName().equals(name)) {
                 result[index] = items[index];
+                counter++;
             }
         }
-        return result;
+        return Arrays.copyOf(result, counter);
     }
 
     String generateId() {

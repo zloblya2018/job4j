@@ -1,4 +1,4 @@
-package ru.job4j.start;
+package ru.job4j.tracker.start;
 
 public class StartUITest {
     public static void main(String[] args) {

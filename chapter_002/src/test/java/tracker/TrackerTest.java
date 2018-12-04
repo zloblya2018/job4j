@@ -1,8 +1,8 @@
-package ru.job4j.tracker;
+package tracker;
 
 import org.junit.Test;
-import ru.job4j.models.Item;
-import ru.job4j.start.Tracker;
+import ru.job4j.tracker.models.Item;
+import ru.job4j.tracker.start.Tracker;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -53,6 +53,8 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item firstItem = new Item("firstItem", "testDescription", 333);
         tracker.add(firstItem);
+        Item secondItem = new Item("secondItem", "testDescription", 333);
+        tracker.add(secondItem);
         Item[] expected = {firstItem};
         assertThat(tracker.findByName(firstItem.getName()), is(expected));
     }
