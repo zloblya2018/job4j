@@ -65,12 +65,8 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", create=" + create +
-                ", id='" + id + '\'' +
-                ", comments=" + Arrays.toString(comments) +
-                '}';
+        return "Item{"
+                + "name='" + name + '\'' + ", description='" + description + '\'' + ", create="
+                + create + ", id='" + id + '\'' + ", comments=" + Arrays.toString(comments) + '}';
     }
 }

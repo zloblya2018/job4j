@@ -69,7 +69,6 @@ public class StartUI {
                 this.replaceItem();
             } else if (DEL.equals(answer)) {
                 this.deleteItem();
-                this.getAllItem();
             } else if (FINDBYID.equals(answer)) {
                 this.findByIdItem();
             } else if (FINDBYNAME.equals(answer)) {
