@@ -1,8 +1,7 @@
-package tracker;
+package ru.job4j.tracker.start;
 
 import org.junit.Test;
 import ru.job4j.tracker.models.Item;
-import ru.job4j.tracker.start.Tracker;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -69,4 +68,23 @@ public class TrackerTest {
         Item[] expected  = {firstItem, secondItem};
         assertThat(tracker.getAll(), is(expected));
     }
+
+    @Test
+    public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
+        Tracker tracker = new Tracker();
+        StubInput stubInput = new StubInput(new String[] {"0", "test name", "desc", "6"});
+        new StartUI(stubInput, tracker).init();
+        assertThat(tracker.getAll()[0].getName(), is("test name"));
+    }
+
+    @Test
+    public void whenUpdateThenTrackerHasUpdatedValue() {
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("test name", "desc"));
+        Input input = new StubInput(new String[] {"2", item.getId(),
+                "test replace", "заменили заявку", "6"});
+        new StartUI(input, tracker).init();
+        assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
+    }
+
 }

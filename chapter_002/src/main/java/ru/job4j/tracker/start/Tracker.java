@@ -20,9 +20,9 @@ public class Tracker {
      * Редактирование заявок.
      */
     public void replace(String id, Item item) {
-        for (int index = 0; index < position; index++) {
-            if (item.getId().equals(id)) {
-                items[index] = item;
+        for (int i = 0; i < position; i++) {
+            if (items[i].getId().equals(id)) {
+                items[i] = item;
                 item.setId(id);
                 break;
             }
