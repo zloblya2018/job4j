@@ -1,5 +1,6 @@
 package ru.job4j.tracker.start;
 
+import org.junit.Before;
 import org.junit.Test;
 import ru.job4j.tracker.models.Item;
 
@@ -7,10 +8,10 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class TrackerTest {
+    private final Tracker tracker = new Tracker();
 
     @Test
     public void whenAddingAnItem() {
-        Tracker tracker = new Tracker();
         Item firstItem = new Item("firstItem", "testDescription", 333);
         tracker.add(firstItem);
         assertThat(tracker.getAll()[0], is(firstItem));
@@ -18,7 +19,6 @@ public class TrackerTest {
 
     @Test
     public void whenEditingTheItem() {
-        Tracker tracker = new Tracker();
         Item firstItem = new Item("firstItem", "testDescription", 333);
         tracker.add(firstItem);
         Item secondItem = new Item("secondItem", "secondTestDescription", 444);
@@ -29,7 +29,6 @@ public class TrackerTest {
 
     @Test
     public void whenDeleteItemThenItemsHasNoItem() {
-        Tracker tracker = new Tracker();
         Item firstItem = new Item("firstItem", "testDescription", 333);
         tracker.add(firstItem);
         Item secondItem = new Item("secondItem", "testDescription", 333);
@@ -41,7 +40,6 @@ public class TrackerTest {
 
     @Test
     public void whenSearchingForAnItemById() {
-        Tracker tracker = new Tracker();
         Item firstItem = new Item("firstItem", "testDescription", 333);
         tracker.add(firstItem);
         assertThat(tracker.findById(firstItem.getId()), is(firstItem));
@@ -49,7 +47,6 @@ public class TrackerTest {
 
     @Test
     public void whenSearchingForItemByName() {
-        Tracker tracker = new Tracker();
         Item firstItem = new Item("firstItem", "testDescription", 333);
         tracker.add(firstItem);
         Item secondItem = new Item("secondItem", "testDescription", 333);
@@ -60,7 +57,6 @@ public class TrackerTest {
 
     @Test
     public void whenRequestingAllItems() {
-        Tracker tracker = new Tracker();
         Item firstItem = new Item("firstItem", "testDescription", 333);
         tracker.add(firstItem);
         Item secondItem = new Item("secondItem", "testDescription", 333);
@@ -71,7 +67,6 @@ public class TrackerTest {
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
-        Tracker tracker = new Tracker();
         StubInput stubInput = new StubInput(new String[] {"0", "test name", "desc", "6"});
         new StartUI(stubInput, tracker).init();
         assertThat(tracker.getAll()[0].getName(), is("test name"));
@@ -79,7 +74,6 @@ public class TrackerTest {
 
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() {
-        Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc"));
         Input input = new StubInput(new String[] {"2", item.getId(),
                 "test replace", "заменили заявку", "6"});
