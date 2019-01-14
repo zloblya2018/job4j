@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Item {
     public String name;
     public String description;
-    public long create;
+    private long create;
     private String id;
     private String[] comments;
 
