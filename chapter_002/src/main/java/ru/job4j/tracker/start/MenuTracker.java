@@ -66,7 +66,7 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             for (Item item : tracker.getAll()) {
-                    System.out.println(item);
+                System.out.println(item);
             }
         }
         @Override
@@ -136,7 +136,7 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             String name = input.ask("Введите имя заявки: ");
             for (Item item : tracker.findByName(name)) {
-                System.out.println(item);
+                    System.out.println(item);
             }
         }
         @Override

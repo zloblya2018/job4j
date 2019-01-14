@@ -65,7 +65,7 @@ public class Tracker {
        int counter = 0;
         for (int index = 0; index != position; index++) {
             if (items[index] != null && items[index].getName().equals(name)) {
-                result[index] = items[index];
+                result[counter] = items[index];
                 counter++;
             }
         }
