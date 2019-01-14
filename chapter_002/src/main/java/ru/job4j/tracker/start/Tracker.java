@@ -60,14 +60,16 @@ public class Tracker {
     /**
      * Получение списка по имени.
      */
-    public Item findByName(String name) {
-       Item result = null;
+    public Item[] findByName(String name) {
+       Item[] result = new Item[this.position];
+       int counter = 0;
         for (int index = 0; index != position; index++) {
             if (items[index] != null && items[index].getName().equals(name)) {
-                result = items[index];
+                result[index] = items[index];
+                counter++;
             }
         }
-        return result;
+        return Arrays.copyOf(result, counter);
     }
 
     String generateId() {

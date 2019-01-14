@@ -3,6 +3,7 @@ package ru.job4j.tracker.start;
 import ru.job4j.tracker.models.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MenuTracker {
@@ -82,16 +83,10 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             String id = input.ask("Введите id заявки: ");
-            System.out.println();
             String name = input.ask("Введите имя заявки: ");
-            System.out.println();
             String desc = input.ask("Введите описание заявки: ");
-            for (Item item : tracker.getAll()) {
-                if (id.equals(item.getId())) {
-                    tracker.replace(id, new Item(name, desc));
-                    break;
-                }
-            }
+            tracker.replace(id, new Item(name, desc));
+            System.out.println("Изменения внесены успешно.");
         }
         @Override
         public String info() {
@@ -108,6 +103,7 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             String id = input.ask("Введите id заявки: ");
             tracker.delete(id);
+            System.out.println("Заявка успешно удалена.");
         }
         @Override
         public String info() {
@@ -123,12 +119,7 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             String id = input.ask("Введите id заявки: ");
-            for (Item item : tracker.getAll()) {
-                if (item.equals(tracker.findById(id))) {
-                    System.out.println(item);
-                    break;
-                }
-            }
+            System.out.println(tracker.findById(id));
         }
         @Override
         public String info() {
@@ -144,10 +135,8 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             String name = input.ask("Введите имя заявки: ");
-            for (Item item : tracker.getAll()) {
-                if (item.equals(tracker.findByName(name))) {
-                    System.out.println(item);
-                }
+            for (Item item : tracker.findByName(name)) {
+                System.out.println(item);
             }
         }
         @Override
