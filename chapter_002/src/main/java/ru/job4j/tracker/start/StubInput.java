@@ -13,4 +13,8 @@ public class StubInput implements Input {
         return answers[position++];
     }
 
+    @Override
+    public int ask(String question, int[] range) {
+        return -1;
+    }
 }

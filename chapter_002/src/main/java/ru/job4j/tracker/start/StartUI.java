@@ -6,6 +6,7 @@ import java.util.List;
 public class StartUI {
 
     private final Input input;
+    private int[] ranges = new int[] {0,1,2,3,4,5};
     /**
      * Хранилище заявок.
      */
@@ -25,8 +26,7 @@ public class StartUI {
         }
         do {
             menuTracker.showMenu();
-            int key = Integer.valueOf(input.ask("Выберите пункт меню: "));
-            menuTracker.select(key);
+            menuTracker.select(input.ask("Выберите пункт меню: ", ranges));
         } while (!"y".equals(this.input.ask( "Выйти из меню? (y) ")));
     }
     /**
@@ -34,6 +34,6 @@ public class StartUI {
      * @param args
      */
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }
