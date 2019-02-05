@@ -6,7 +6,6 @@ import java.util.List;
 public class StartUI {
 
     private final Input input;
-    private int[] ranges = new int[] {0,1,2,3,4,5};
     /**
      * Хранилище заявок.
      */
@@ -18,7 +17,7 @@ public class StartUI {
     }
 
     public void init() {
-        MenuTracker menuTracker = new MenuTracker(this.input, tracker);
+        MenuTracker menuTracker = new MenuTracker(this.input, this.tracker);
         List<Integer> range = new ArrayList<>();
         menuTracker.fillAction();
         for (int i = 0; i < menuTracker.getActionMenuLength(); i++) {
@@ -26,7 +25,7 @@ public class StartUI {
         }
         do {
             menuTracker.showMenu();
-            menuTracker.select(input.ask("Выберите пункт меню: ", ranges));
+            menuTracker.select(input.ask("Выберите пункт меню: ", range));
         } while (!"y".equals(this.input.ask( "Выйти из меню? (y) ")));
     }
     /**

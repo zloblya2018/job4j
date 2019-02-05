@@ -3,7 +3,6 @@ package ru.job4j.tracker.start;
 import ru.job4j.tracker.models.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MenuTracker {
@@ -30,7 +29,7 @@ public class MenuTracker {
     }
 
     public void select(int key) {
-        this.userActions.get(key).execute(this.input, this.tracker);
+        this.userActions.get(key).execute(this.input, tracker);
     }
 
     public void showMenu() {
