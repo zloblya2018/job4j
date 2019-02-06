@@ -26,7 +26,7 @@ public class ValidateInputTest {
         List<Integer> range = new ArrayList<>();
         range.add(1);
         input.ask("Enter", range);
-        assertThat(this.mem.toString(), is(String.format("Пожалуйста введите корректные данные."))
+        assertThat(this.mem.toString(), is(String.format("Пожалуйста введите корректные данные.%n"))
         );
     }
     @Test
@@ -35,6 +35,6 @@ public class ValidateInputTest {
         List<Integer> range = new ArrayList<>();
         range.add(1);
         input.ask("Enter", range);
-        assertThat(this.mem.toString(), is(String.format("Пожалуйста введите цифру из заданного диапазона.")));
+        assertThat(this.mem.toString(), is(String.format("Пожалуйста введите цифру из заданного диапазона.%n")));
     }
 }
