@@ -1,6 +1,6 @@
-package ru.job4j.tracker.models;
+package ru.job4j.tracker.models;;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Item {
     public String name;
@@ -69,4 +69,66 @@ public class Item {
                 + "name='" + name + '\'' + ", description='" + description + '\'' + ", create="
                 + create + ", id='" + id + '\'' + ", comments=" + Arrays.toString(comments) + '}';
     }
+    /*
+    public enum TrackerSingle {
+        INSTANCE;
+
+        public Item add(Item model) {
+            return model;
+        }
+    }*/
+
+    /*
+    public static class TrackerSingle {
+        private static TrackerSingle instance;
+
+        private TrackerSingle() {
+        }
+
+        public static TrackerSingle getInstance() {
+            if (instance == null) {
+                instance = new TrackerSingle();
+            }
+            return instance;
+        }
+
+        public Item add(Item model) {
+            return model;
+        }
+    }
+    */
+    /*
+    public static class TrackerSingle {
+        private static TrackerSingle INSTANCE = new TrackerSingle();
+
+        private TrackerSingle() {
+        }
+
+        public static TrackerSingle getInstance() {
+            return INSTANCE;
+        }
+
+        public Item add(Item model) {
+            return model;
+        }
+    }
+    */
+    public static class TrackerSingle {
+
+        private TrackerSingle() {
+        }
+
+        public static TrackerSingle getInstance() {
+            return Holder.INSTANCE;
+        }
+
+        public Item add(Item model) {
+            return model;
+        }
+
+        private static class Holder {
+            private static final TrackerSingle INSTANCE = new TrackerSingle();
+        }
+    }
+
 }

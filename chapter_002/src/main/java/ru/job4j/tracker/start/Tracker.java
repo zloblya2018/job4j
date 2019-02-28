@@ -1,7 +1,7 @@
 package ru.job4j.tracker.start;
 
 import ru.job4j.tracker.models.*;
-
+import ru.job4j.tracker.start.Tracker.*;
 import java.util.*;
 
 public class Tracker {
@@ -80,5 +80,68 @@ public class Tracker {
      */
     public Item[] getAll() {
         return Arrays.copyOf(items, this.position);
+    }
+
+
+    public enum SingletonVariableOne {
+        INSTANCE;
+
+        public Tracker add(Tracker model) {
+            return model;
+        }
+    }
+
+
+    public static class SingletonVariableTwo {
+
+        private static SingletonVariableTwo instance;
+
+        public SingletonVariableTwo() {
+        }
+
+        public static SingletonVariableTwo getInstance() {
+            if (instance == null) {
+                instance = new SingletonVariableTwo();
+            }
+            return instance;
+        }
+
+        public Tracker add(Tracker model) {
+            return model;
+        }
+    }
+
+    public static class SingletonVariableThree {
+        private static SingletonVariableThree instance = new SingletonVariableThree();
+
+        public SingletonVariableThree() {
+        }
+
+        public static SingletonVariableThree getInstance() {
+            return instance;
+        }
+
+        public Tracker add(Tracker model) {
+            return model;
+        }
+    }
+
+    public static class SingletonVariableFour {
+        private SingletonVariableFour() {
+        }
+
+        public static SingletonVariableFour getInstance() {
+            return Holder.INSTANCE;
+        }
+
+        public Tracker add(Tracker model) {
+            return model;
+        }
+
+        private static final class Holder {
+            public static final SingletonVariableFour INSTANCE = new SingletonVariableFour();
+        }
+
+
     }
 }
